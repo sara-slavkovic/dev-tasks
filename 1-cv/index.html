@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Slavković – CV</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/playfair-display-v40-latin-regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/playfair-display-v40-latin-700.woff2') format('woff2');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('fonts/dm-sans-v17-latin-300.woff2') format('woff2');
+            font-weight: 300;
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('fonts/dm-sans-v17-latin-500.woff2') format('woff2');
+            font-weight: 500;
+        }
+
+        :root {
+            --accent: #7c6fcd;
+            --accent-light: #ede9fb;
+            --sidebar-bg: #1e1b2e;
+            --sidebar-text: #c9c4e8;
+            --body-bg: #f7f6fb;
+            --text-dark: #1a1a2e;
+            --border: #e0daf5;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--body-bg);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .photo-wrap {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            overflow: hidden;
+            background: #2d2847;
+        }
+
+        .photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .sidebar-title {
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #fff;
+            border-bottom: 1px solid #3a3560;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item a {
+            color: var(--sidebar-text);
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 0.82rem;
+        }
+        .contact-item a:hover { color: var(--accent); }
+        .contact-item span { font-size: 0.82rem; }
+        .contact-item i { color: var(--accent); font-size: 1rem; }
+
+        .skill-badge {
+            background: #2d2847;
+            color: var(--sidebar-text);
+            border: 1px solid #3a3560;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+
+        .skill-category {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-name { font-size: 0.82rem; }
+
+        .lang-level {
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+
+        .about-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #3d3760;
+            line-height: 1.7;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .section-title i { color: var(--accent); font-size: 1.2rem; }
+
+        .entry-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .entry-company { font-size: 0.85rem; color: var(--accent); font-weight: 500; }
+
+        .entry-date {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .entry-list { list-style: none; padding: 0; }
+
+        .entry-list li {
+            font-size: 0.85rem;
+            color: #444;
+            padding-left: 1rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .entry-list li::before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .entry-block {
+            border-left: 2px solid var(--border);
+            transition: border-color 0.2s;
+        }
+        .entry-block:hover { border-color: var(--accent); }
+
+        .project-tag {
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.72rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { min-height: auto; position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid p-0">
+    <div class="row g-0">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-4 col-lg-3 sidebar p-4">
+
+            <div class="photo-wrap mx-auto mb-3 d-flex align-items-center justify-content-center">
+                <img src="images/cv_photo.jpg" alt="Sara Slavković">
+            </div>
+
+            <div class="sidebar-name text-center mb-1">SARA<br>SLAVKOVIĆ</div>
+            <div class="sidebar-title text-center text-uppercase mb-4">Diplomirani inženjer<br>organizacionih nauka</div>
+
+            <!-- Kontakt -->
+            <div class="sidebar-section-title">Kontakt</div>
+            <div class="contact-item d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-geo-alt-fill"></i><span>Beograd, Srbija</span>
+            </div>
+            <div class="contact-item d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-telephone-fill"></i><span>+381 63 586 614</span>
+            </div>
+            <div class="contact-item d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-envelope-fill"></i>
+                <a href="mailto:saraslavkovic3@gmail.com">saraslavkovic3@gmail.com</a>
+            </div>
+            <div class="contact-item d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-linkedin"></i>
+                <a href="https://linkedin.com/in/sara-slavkovic" target="_blank">linkedin.com/in/sara-slavkovic</a>
+            </div>
+            <div class="contact-item d-flex align-items-center gap-2 mb-2">
+                <i class="bi bi-github"></i>
+                <a href="https://github.com/sara-slavkovic" target="_blank">github.com/sara-slavkovic</a>
+            </div>
+
+            <div class="sidebar-section-title">Tehničke veštine</div>
+
+            <div class="skill-category mt-2 mb-1">Programski jezici</div>
+            <span class="skill-badge badge me-1 mb-1">C#</span>
+            <span class="skill-badge badge me-1 mb-1">Java</span>
+            <span class="skill-badge badge me-1 mb-1">PHP</span>
+            <span class="skill-badge badge me-1 mb-1">JavaScript</span>
+            <span class="skill-badge badge me-1 mb-1">HTML</span>
+            <span class="skill-badge badge me-1 mb-1">CSS</span>
+            <span class="skill-badge badge me-1 mb-1">C</span>
+            <span class="skill-badge badge me-1 mb-1">VB</span>
+
+            <div class="skill-category mt-2 mb-1">Frameworks</div>
+            <span class="skill-badge badge me-1 mb-1">ASP.NET</span>
+            <span class="skill-badge badge me-1 mb-1">Laravel</span>
+            <span class="skill-badge badge me-1 mb-1">Spring Boot</span>
+            <span class="skill-badge badge me-1 mb-1">React</span>
+
+            <div class="skill-category mt-2 mb-1">Baze podataka</div>
+            <span class="skill-badge badge me-1 mb-1">SQL Server</span>
+            <span class="skill-badge badge me-1 mb-1">MySQL</span>
+
+            <div class="skill-category mt-2 mb-1">Alati</div>
+            <span class="skill-badge badge me-1 mb-1">Git</span>
+            <span class="skill-badge badge me-1 mb-1">TFS</span>
+            <span class="skill-badge badge me-1 mb-1">CI/CD</span>
+            <span class="skill-badge badge me-1 mb-1">Visual Studio</span>
+            <span class="skill-badge badge me-1 mb-1">VS Code</span>
+            <span class="skill-badge badge me-1 mb-1">Postman</span>
+            <span class="skill-badge badge me-1 mb-1">Swagger</span>
+            <span class="skill-badge badge me-1 mb-1">SSRS</span>
+            <span class="skill-badge badge me-1 mb-1">Report Builder</span>
+            <span class="skill-badge badge me-1 mb-1">Spire</span>
+
+            <div class="skill-category mt-2 mb-1">Koncepti</div>
+            <span class="skill-badge badge me-1 mb-1">OOP</span>
+            <span class="skill-badge badge me-1 mb-1">REST API</span>
+            <span class="skill-badge badge me-1 mb-1">Dizajn paterni</span>
+            <span class="skill-badge badge me-1 mb-1">Arhitektura softvera</span>
+            <span class="skill-badge badge me-1 mb-1">Debagovanje</span>
+
+            <div class="sidebar-section-title">Jezici</div>
+            <div class="d-flex justify-content-between mb-1">
+                <span class="lang-name">Engleski</span>
+                <span class="lang-level">Napredni (C1)</span>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+                <span class="lang-name">Nemački</span>
+                <span class="lang-level">Srednji (B1)</span>
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-lg-9 p-4">
+
+            <div class="about-box p-3 mb-4">
+                Softverski inženjer za razvoj i održavanje poslovnih veb-aplikacija (.NET, C#, T-SQL).
+                Student master studija Softverskog inženjerstva i veštačke inteligencije na
+                Fakultetu organizacionih nauka, Univerzitet u Beogradu.
+            </div>
+
+            <div class="mb-4">
+                <div class="section-title d-flex align-items-center gap-2 pb-1 mb-3">
+                    <i class="bi bi-briefcase-fill"></i> Radno iskustvo
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Programer za razvoj informacionih sistema</div>
+                    <div class="entry-company mb-1">Generali Osiguranje Srbija, Beograd</div>
+                    <div class="entry-date mb-2">maj 2025 – sada</div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Dizajn, implementiranje i testiranje novih modula produkcionih informacionih sistema u .NET-u</li>
+                        <li class="mb-1">Baze podataka (SQL Server)</li>
+                        <li class="mb-1">Održavanje i unapređenje postojećih veb-aplikacija</li>
+                        <li class="mb-1">Priprema tehničke i korisničke dokumentacije</li>
+                        <li class="mb-1">Upravljanje puštanjem aplikacija u rad kroz razvojno/produkciono okruženje</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="section-title d-flex align-items-center gap-2 pb-1 mb-3">
+                    <i class="bi bi-code-slash"></i> Projekti
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Aplikacija za praćenje rada škole</div>
+                    <div class="mb-1">
+                        <span class="project-tag badge px-2 py-1 me-1">Java</span>
+                        <span class="project-tag badge px-2 py-1 me-1">MySQL</span>
+                    </div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Razvoj klijent-server aplikacije</li>
+                        <li class="mb-1">Dizajn baze podataka i implementiranje backend logike</li>
+                        <li class="mb-1">Implementacija funkcionalnosti za upravljanje grupama studenata i praćenje kurseva obuke</li>
+                    </ul>
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Aplikacija za rezervaciju smeštaja</div>
+                    <div class="mb-1">
+                        <span class="project-tag badge px-2 py-1 me-1">Laravel</span>
+                        <span class="project-tag badge px-2 py-1 me-1">React</span>
+                        <span class="project-tag badge px-2 py-1 me-1">MySQL</span>
+                    </div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Razvoj full-stack veb-aplikacije za rezervaciju smeštaja</li>
+                        <li class="mb-1">Implementacija pretrage, rezervacije i upravljanja smeštajem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="section-title d-flex align-items-center gap-2 pb-1 mb-3">
+                    <i class="bi bi-people-fill"></i> Aktivnosti
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Saradnik na Katedri za elektronsko poslovanje</div>
+                    <div class="entry-company mb-1">Fakultet organizacionih nauka, Beograd</div>
+                    <div class="entry-date mb-2">okt 2023 – sep 2024</div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Priprema nastavnih materijala – Simulacija i simulacioni jezici</li>
+                        <li class="mb-1">Izvođenje nastave (razvoj video igara, Unity)</li>
+                    </ul>
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Član Upravnog odbora za odnose s javnošću</div>
+                    <div class="entry-company mb-1">Udruženje studenata informatike FONIS</div>
+                    <div class="entry-date mb-2">jun 2023 – jul 2024</div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Vođa PR tima</li>
+                        <li class="mb-1">Upravljanje društvenim mrežama organizacije FONIS</li>
+                        <li class="mb-1">Koordinacija internih aktivnosti i 4 eksterna projekta (FON Hakaton, Hakaton za srednjoškolce, Studenti studentima, Kompanije studentima)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="section-title d-flex align-items-center gap-2 pb-1 mb-3">
+                    <i class="bi bi-mortarboard-fill"></i> Obrazovanje
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Fakultet organizacionih nauka, Univerzitet u Beogradu</div>
+                    <div class="entry-date mb-1">2025 – sada</div>
+                    <div style="font-size:0.85rem; color:#444;">Master studije – Softversko inženjerstvo i veštačka inteligencija</div>
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Fakultet organizacionih nauka, Univerzitet u Beogradu</div>
+                    <div class="entry-date mb-1">2020 – 2024</div>
+                    <div style="font-size:0.85rem; color:#444;">Osnovne studije – Informacioni sistemi i tehnologije</div>
+                    <div style="font-size:0.82rem; color: var(--accent); margin-top:0.2rem;">Prosek: 9.09/10</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="section-title d-flex align-items-center gap-2 pb-1 mb-3">
+                    <i class="bi bi-patch-check-fill"></i> Sertifikati
+                </div>
+                <div class="entry-block ps-3 mb-3">
+                    <div class="entry-title mb-1">Kurs: Back End Engineering</div>
+                    <div class="entry-company mb-1">Wargaming</div>
+                    <div class="entry-date mb-2">mar 2025 – maj 2025</div>
+                    <ul class="entry-list">
+                        <li class="mb-1">Python, PostgreSQL, koncepti backend razvoja</li>
+                        <li class="mb-1">Git, CI/CD alati (GitLab), Linux okruženje</li>
+                        <li class="mb-1">FastAPI, Docker, Kubernetes i RabbitMQ</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
