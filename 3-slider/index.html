@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slajder</title>
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <style>
+        :root {
+            --accent: #7c6fcd;
+            --accent-light: #ede9fb;
+            --dark: #1e1b2e;
+            --border: rgba(255, 255, 255, 0.15);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, var(--dark), var(--accent), var(--dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .slider-wrap {
+            width: 90%;
+            max-width: 1000px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 32px var(--shadow);
+        }
+
+        .slick-slide img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .slick-prev, .slick-next {
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            transition: transform 0.2s ease;
+        }
+
+        .slick-prev:hover, .slick-next:hover {
+            transform: translateY(-50%) scale(1.4);
+        }
+
+        .slick-prev { left: 10px; }
+        .slick-next { right: 10px; }
+
+        .slick-dots li button:before {
+            color: var(--accent-light);
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-wrap">
+    <div class="slider">
+        <div><img src="images/aesthetic-ocean.jpg" alt="Ocean"></div>
+        <div><img src="images/ocean-shell-spiral-beauty-desktop-wallpaper-cover.jpg" alt="Shell"></div>
+        <div><img src="images/pexels-francesco-ungaro.jpg" alt="Francesco"></div>
+        <div><img src="images/pexels-nicole-avagliano.jpg" alt="Nicole"></div>
+        <div><img src="images/sea-shells-in-clear-water-desktop-wallpaper-preview.jpg" alt="Sea shells"></div>
+        <div><img src="images/sea-turtle.jpg" alt="Sea turtle"></div>
+        <div><img src="images/waves.jpg" alt="Tropical beach"></div>
+    </div>
+</div>
+
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="slick/slick.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            dots: true,
+            arrows: true,
+            infinite: true,
+            speed: 600,
+            fade: true,
+            pauseOnHover: true,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        dots: false
+                    }
+                }
+            ]
+        });
+    });
+
+    $(document).keydown(function(e) {
+        if (e.key === 'ArrowLeft') {
+            $('.slider').slick('slickPrev');
+        }
+        if (e.key === 'ArrowRight') {
+            $('.slider').slick('slickNext');
+        }
+    });
+</script>
+
+</body>
+</html>
