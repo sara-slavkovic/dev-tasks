@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija korisnika</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #7c6fcd;
+            --accent-light: #ede9fb;
+            --dark: #1e1b2e;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--accent), var(--dark));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .form-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 550px;
+        }
+
+        .form-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .form-subtitle {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1.8rem;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(124, 111, 205, 0.2);
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: var(--dark);
+            color: #fff;
+        }
+
+        .invalid-feedback {
+            font-size: 0.78rem;
+        }
+
+        .success-box {
+            display: none;
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem;
+        }
+
+        .success-box h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .success-box p {
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 0.3rem;
+        }
+
+        .success-box span {
+            font-weight: 600;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-card">
+
+    <div id="form-wrapper">
+        <div class="form-title">Registracija</div>
+        <div class="form-subtitle">Popunite sva polja da biste se registrovali</div>
+
+        <form id="registration-form" novalidate>
+
+            <div id="server-error" class="alert alert-danger mt-2" style="display:none;"></div>
+
+            <div class="mb-3">
+                <label for="ime" class="form-label">* Ime:</label>
+                <input type="text" class="form-control" id="ime" name="ime" placeholder="Unesite ime">
+                <div class="invalid-feedback" id="error-ime"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="prezime" class="form-label">* Prezime:</label>
+                <input type="text" class="form-control" id="prezime" name="prezime" placeholder="Unesite prezime">
+                <div class="invalid-feedback" id="error-prezime"></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label d-block">* Pol:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="pol-muski" name="pol" value="Muški">
+                    <label class="form-check-label" for="pol-muski">Muški</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="pol-zenski" name="pol" value="Ženski">
+                    <label class="form-check-label" for="pol-zenski">Ženski</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="pol-drugo" name="pol" value="Drugo">
+                    <label class="form-check-label" for="pol-drugo">Drugo</label>
+                </div>
+                <div class="invalid-feedback" id="error-pol"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="godina" class="form-label">* Godina rođenja:</label>
+                <input type="number" class="form-control" id="godina" name="godina" placeholder="npr. 1995" min="1900" max="2010">
+                <div class="invalid-feedback" id="error-godina"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="adresa" class="form-label">* Adresa:</label>
+                <textarea class="form-control" id="adresa" name="adresa" rows="2" placeholder="Unesite adresu"></textarea>
+                <div class="invalid-feedback" id="error-adresa"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="grad" class="form-label">* Grad:</label>
+                <select class="form-select" id="grad" name="grad">
+                    <option value="">-- Izaberite grad --</option>
+                    <option value="Beograd">Beograd</option>
+                    <option value="Novi Sad">Novi Sad</option>
+                    <option value="Niš">Niš</option>
+                    <option value="Kragujevac">Kragujevac</option>
+                    <option value="Subotica">Subotica</option>
+                    <option value="Zrenjanin">Zrenjanin</option>
+                    <option value="Pančevo">Pančevo</option>
+                    <option value="Čačak">Čačak</option>
+                    <option value="Novi Pazar">Novi Pazar</option>
+                    <option value="Kraljevo">Kraljevo</option>
+                    <option value="Kruševac">Kruševac</option>
+                    <option value="Leskovac">Leskovac</option>
+                    <option value="Valjevo">Valjevo</option>
+                    <option value="Vranje">Vranje</option>
+                    <option value="Šabac">Šabac</option>
+                </select>
+                <div class="invalid-feedback" id="error-grad"></div>
+            </div>
+
+            <button type="submit" class="btn-submit mt-2">Pošalji</button>
+            
+        </form>
+    </div>
+
+    <div class="success-box" id="success-box">
+        <h4>✓ Registracija uspešna!</h4>
+        <p>Ime: <span id="res-ime"></span></p>
+        <p>Prezime: <span id="res-prezime"></span></p>
+        <p>Godina rođenja: <span id="res-godina"></span></p>
+        <p>Adresa: <span id="res-adresa"></span></p>
+        <p>Grad: <span id="res-grad"></span></p>
+        <p>Pol: <span id="res-pol"></span></p>
+    </div>
+
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="validation.js"></script>
+
+</body>
+</html>
